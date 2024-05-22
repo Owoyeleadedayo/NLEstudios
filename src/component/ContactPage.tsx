@@ -1,4 +1,12 @@
-import { Button, Flex, Heading, Icon, Input, Text, Textarea } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Input,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import {
   FaPhone,
   FaEnvelope,
@@ -7,20 +15,19 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-
 const ContactPage = () => {
   return (
     <>
       <Flex
         bgColor="white"
-        h={"600px"}
         w={"100%"}
-        px={"100px"}
-        pt={"150px"}
-        flexDir={"row"}
+        px={{ base: "20px", md: "50px", lg: "100px" }} 
+        pt={{ base: "100px", md: "100px", lg: "150px" }} 
+        flexDir={{ base: "column", md: "row", lg: "row" }} 
         gap={"50px"}
       >
-        <Flex flexDir={"column"} gap={"30px"}>
+        <Flex flexDir={"column"} gap={"30px"} w={{ base: "100%", md: "50%" }}>
+          {" "}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,7 +42,12 @@ const ContactPage = () => {
             <Heading as={"h2"} fontFamily={"Lato"}>
               Contact Us
             </Heading>
-            <Text maxW={"800px"} fontFamily={"Lato"} fontSize={"18px"} mt={'10px'}>
+            <Text
+              maxW={{ base: "100%", md: "80%", lg: "80%" }}
+              fontFamily={"Lato"}
+              fontSize={{ base: "16px", md: "18px" }} 
+              mt={"10px"}
+            >
               Not sure what you need? Our team at NLE.studios are more than
               happy to listen to you and suggest solutions and ideas you have
               not considered yet.
@@ -69,7 +81,8 @@ const ContactPage = () => {
             </Flex>
           </motion.div>
         </Flex>
-        <Flex flexDir={"column"} gap={"50px"} w={"100%"}>
+        <Flex flexDir={"column"} gap={"30px"} w={{ base: "100%", md: "50%" }}>
+          {" "}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -81,26 +94,34 @@ const ContactPage = () => {
             }}
             viewport={{ once: true }}
           >
-            <Flex pb={'20px'}>
+            <Flex pb={"20px"}>
               {" "}
-              <Heading fontFamily={"Lato"} fontSize={"30px"}>
-                Let's get In Touch
+              <Heading
+                fontFamily={"Lato"}
+                fontSize={{ base: "24px", md: "30px" }}
+              >
+                {" "}
               </Heading>
             </Flex>
-            <Flex flexDir={"column"} w={"100%"}>
-              <Text fontFamily={"Lato"} fontSize={"18px"}>
+            <Flex flexDir={"column"} w={"100%"} gap={"10px"}>
+              <Text fontFamily={"Lato"} fontSize={{ base: "16px", md: "18px" }}>
+                {" "}
                 First Name:
               </Text>
               <Input
                 placeholder="e.g John Doe"
                 variant="filled"
                 size="md"
-                // h={"40px"}
                 borderRadius={"8px"}
                 borderColor={"#DCDCDC"}
                 focusBorderColor={"#D1D0CE"}
               />
-              <Text fontFamily={"Lato"} fontSize={"18px"} pt={"10px"}>
+              <Text
+                fontFamily={"Lato"}
+                fontSize={{ base: "16px", md: "18px" }}
+                pt={"10px"}
+              >
+                {" "}
                 Email:
               </Text>
               <Input
@@ -112,7 +133,12 @@ const ContactPage = () => {
                 borderColor={"#DCDCDC"}
                 focusBorderColor={"#D1D0CE"}
               />
-              <Text fontFamily={"Lato"} fontSize={"18px"} pt={"10px"}>
+              <Text
+                fontFamily={"Lato"}
+                fontSize={{ base: "16px", md: "18px" }}
+                pt={"10px"}
+              >
+                {" "}
                 Message:
               </Text>
               <Textarea
@@ -130,15 +156,15 @@ const ContactPage = () => {
               >
                 <Button
                   bg={"rgba(247, 148, 29, 0.9)"}
-                  py={{ lg: "22px", base: "18px" }}
-                  px={{ lg: "30px", base: "22px" }}
+                  py={{ base: "18px", lg: "22px" }}
+                  px={{ base: "22px", lg: "30px" }} 
                   fontFamily={"Lato"}
-                  fontSize={{ lg: "20px", base: "15px" }}
-                  mt={'20px'}
+                  fontSize={{ base: "15px", lg: "20px" }} 
+                  mt={"20px"}
                   _hover={{
                     color: "rgba(247, 148, 29, 0.8 )",
                     bg: "white",
-                    borderColor: "1px soild rgba(247, 148, 29, 0.8)",
+                    borderColor: "1px solid rgba(247, 148, 29, 0.8)",
                   }}
                 >
                   Send Message
@@ -150,6 +176,6 @@ const ContactPage = () => {
       </Flex>
     </>
   );
-}
+};
 
-export default ContactPage
+export default ContactPage;

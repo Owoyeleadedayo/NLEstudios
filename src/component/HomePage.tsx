@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text } from "@chakra-ui/react"
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Image1 from "../assets/images/Welcome page.png";
 import { motion } from "framer-motion";
 
@@ -10,29 +10,34 @@ const HomePage = () => {
         bgSize={"cover"}
         w={"100%"}
         bgRepeat={"no-repeat"}
-        h={"600px"}
-        // color={"#F7941D"}
+        h={{ base: "600px", md: "600px" }} // Adjusted height for responsiveness
       >
         <Flex
           bgColor="rgba(247, 148, 29, 0.5)"
-          h={"600px"}
+          h={"100%"}
           w={"100%"}
-          px={"100px"}
+          px={{ base: "20px", md: "50px", lg: "100px" }} // Responsive padding
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            <Flex flexDirection={"column"} gap={"20px"}>
+            <Flex
+              flexDirection={"column"}
+              gap={{ base: "10px", md: "20px" }} // Responsive gap
+              alignItems={{ base: "center", md: "flex-start" }} // Center align on smaller screens
+              pt={{ md: "0px", lg: "0px", base: "60px" }}
+            >
               <Heading
                 as={"h1"}
-                mt={"200px"}
+                mt={{ base: "50px", md: "150px", lg: "200px" }} // Responsive margin top
                 color={"white"}
-                fontSize={"50px"}
+                fontSize={{ base: "20px", md: "40px", lg: "50px" }} // Responsive font size
                 fontFamily={"Lato"}
                 fontWeight={600}
-                lineHeight={"60px"}
+                lineHeight={{ base: "30px", md: "50px", lg: "60px" }} // Responsive line height
+                textAlign={{ base: "center", md: "left" }} // Center text on smaller screens
               >
                 Through{" "}
                 <Text as={"span"} color={"purple"}>
@@ -44,15 +49,16 @@ const HomePage = () => {
               </Heading>
               <Text
                 color={"white"}
-                fontSize={"24px"}
+                fontSize={{ base: "16px", md: "20px", lg: "24px" }} // Responsive font size
                 textTransform={"capitalize"}
                 fontFamily={"Lato"}
                 fontWeight={600}
+                textAlign={{ base: "center", md: "left" }} // Center text on smaller screens
               >
                 If you can think it, we can create it
               </Text>
               <Button
-                width={"140px"}
+                width={{ base: "120px", md: "140px" }} // Responsive button width
                 mt={"20px"}
                 bgColor="rgba(247, 148, 29, 0.5)"
                 fontFamily={"Lato"}
@@ -73,6 +79,6 @@ const HomePage = () => {
       </Flex>
     </>
   );
-}
+};
 
-export default HomePage
+export default HomePage;

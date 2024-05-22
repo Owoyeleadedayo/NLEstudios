@@ -1,10 +1,27 @@
-import { Flex, Image, Link } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Link,
+  IconButton,
+  Box,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { MdClose } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Image1 from "../assets/images/Logo1.png";
 import Image2 from "../assets/images/Logo2-24.png";
 import { motion } from "framer-motion";
 
-
 const NavPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const menuItems = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/subfirms", label: "Sub-Firms" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
     <>
       <motion.div
@@ -18,9 +35,8 @@ const NavPage = () => {
           h={"90px"}
           justifyContent={"space-between"}
           alignItems={"center"}
-          display={"flex"}
           bgColor={"rgba(247, 148, 29, 0.8)"}
-          px={"80px"}
+          px={{ base: "20px", md: "50px", lg: "80px" }} // Responsive padding
           position={"fixed"}
           zIndex={99}
         >
@@ -38,59 +54,68 @@ const NavPage = () => {
               <Image src={Image2} alt="Logo" width={"100%"} height={"100%"} />
             </Flex>
           </Flex>
-          <Flex justifyContent="center" alignItems="center">
-            <Link
-              href="/"
-              fontSize="xl"
-              fontWeight="semibold"
-              color={"white"}
-              transition="color 0.4s ease-in"
-              _hover={{ color: "white" }}
-              mr={12}
-            >
-              Home
-            </Link>
-            <Link
-              href="about"
-              fontSize="xl"
-              fontWeight="semibold"
-              color={"white"}
-              transition="color 0.4s ease-in"
-              _hover={{ color: "white" }}
-              mr={12}
-            >
-              About
-            </Link>
-            <Link
-              href="subfirms"
-              fontSize="xl"
-              fontWeight="semibold"
-              color={"white"}
-              transition="color 0.4s ease-in"
-              _hover={{ color: "white" }}
-              mr={12}
-            >
-              Sub-Firms
-            </Link>
-            <Link
-              href="contact"
-              fontSize="xl"
-              fontWeight="semibold"
-              color={"white"}
-              border={"1px solid white"}
-              px={"24px"}
-              py={"10px"}
-              transition="color 0.4s ease-in"
-              _hover={{ color: "white" }}
-              mr={12}
-            >
-              Contact
-            </Link>
+          <Flex
+            display={{ base: "none", md: "flex" }}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {menuItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.href}
+                fontSize="xl"
+                fontWeight="semibold"
+                color={"white"}
+                transition="color 0.4s ease-in"
+                _hover={{ color: "white" }}
+                mr={12}
+              >
+                {item.label}
+              </Link>
+            ))}
           </Flex>
+          <IconButton
+            display={{ base: "flex", md: "none" }}
+            icon={isOpen ? <MdClose /> : <GiHamburgerMenu />}
+            onClick={isOpen ? onClose : onOpen}
+            aria-label={"Toggle Navigation"}
+            color={"white"}
+            bg={"transparent"}
+            _hover={{ bg: "transparent" }}
+          />
         </Flex>
+
+        {isOpen && (
+          <Box
+            display={{ base: "block", md: "none" }}
+            bgColor={"rgba(247, 148, 29, 0.8)"}
+            w={"100%"}
+            position={"fixed"}
+            top={"90px"}
+            left={0}
+            zIndex={98}
+          >
+            <Flex flexDirection={"column"} alignItems={"center"} py={4}>
+              {menuItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  fontSize="xl"
+                  fontWeight="semibold"
+                  color={"white"}
+                  transition="color 0.4s ease-in"
+                  _hover={{ color: "white" }}
+                  py={2}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </Flex>
+          </Box>
+        )}
       </motion.div>
     </>
   );
-}
+};
 
-export default NavPage
+export default NavPage;

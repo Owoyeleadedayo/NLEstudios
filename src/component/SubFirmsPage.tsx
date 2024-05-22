@@ -12,7 +12,7 @@ const SubFirmsPage = () => {
     <>
       <motion.div>
         <Flex
-          flexDirection={"row"}
+          flexDirection={{ lg: "row", md: "row", base: "column" }}
           bgColor={"white"}
           pt={"90px"}
           w={"100%"}
